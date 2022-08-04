@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row" *ngFor="let cartProduct of cartProducts">
+        <div class="col-12 bg-grey m-2">
+            Name:<div>{{cartProduct?.name}}</div>
+            <div>{{cartProduct?.description}}</div>
+            <div>{{cartProduct?.price}}</div>
+            <div *ngIf="cartProduct?.hasDiscount"> Amount after {{cartProduct?.amountAfterDiscount}}</div>
+            <label> Quantity</label>
+            <input (change)="changeQuantity($event , cartProduct)" value="1">
+        </div>
+    </div>
+    <div>Total : {{total}}</div>
+    <button (click)="onSubmit()"> Checkout</button>
+</div>

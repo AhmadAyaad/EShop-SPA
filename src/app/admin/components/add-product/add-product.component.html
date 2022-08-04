@@ -1,0 +1,65 @@
+<p>add-product works!</p>
+
+<form [formGroup]="addProductForm" *ngIf="addProductForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <!--#region  Name-->
+        <div class="col-6">
+            <label for="productInputName" class="font-weight-bold">Product Name</label>
+            <input formControlName="name" placeholder="Product Name" type="text" class="form-control"
+                id="productInputName" />
+            <small class="form-error"
+                *ngIf="formControls?.name?.touched && formControls?.name?.errors?.required">Product Name is
+                required.</small>
+            <small class="form-error" *ngIf="formControls?.name?.touched && formControls?.name?.errors?.maxlength">
+                Product Name cannot exceed 50 characters.
+            </small>
+        </div>
+        <!--#endregion  Name-->
+
+        <!--#region  Description-->
+        <div class="col-6">
+            <label for="descriptionInputName" class="font-weight-bold">Product Description</label>
+            <input formControlName="description" placeholder="Product Description" type="text" class="form-control"
+                id="descriptionInputName" />
+            <small class="form-error"
+                *ngIf="formControls?.description?.touched && formControls?.description?.errors?.required">Product
+                Description is
+                required.</small>
+            <small class="form-error"
+                *ngIf="formControls?.description?.touched && formControls?.description?.errors?.maxlength">
+                Product Description cannot exceed 255 characters.
+            </small>
+        </div>
+        <!--#endregion  Description-->
+
+        <!--#region  Price-->
+        <div class="col-6">
+            <label for="priceInputName" class="font-weight-bold">Product Price</label>
+            <input formControlName="price" placeholder="Product Price" type="text" class="form-control"
+                id="priceInputName" />
+            <small class="form-error"
+                *ngIf="formControls?.price?.touched && formControls?.price?.errors?.required">Product
+                Price is
+                required.</small>
+            <small class="form-error" *ngIf="formControls?.price?.touched && formControls?.price?.errors?.min">
+                Product Price cannot be less than 1.
+            </small>
+        </div>
+        <!--#endregion  Price-->
+
+        <!--#region Category-->
+        <div class="col p-field mt-4">
+            <label for="productUnit" class="font-weight-bold">Category</label>
+            <p-dropdown formControlName="categoryId" placeholder="Select Category" [options]="categories"
+                optionLabel="name" optionValue="id" dataKey="id">
+            </p-dropdown>
+            <small class="form-error"
+                *ngIf="formControls?.categoryId?.touched && formControls?.categoryId?.errors?.required">Category is
+                required.</small>
+        </div>
+        <!--#endregion Category-->
+        <div style="text-align: center">
+            <button class="btn btn-success mt-5" [disabled]="!addProductForm.valid" type="submit">Add</button>
+        </div>
+    </div>
+</form>

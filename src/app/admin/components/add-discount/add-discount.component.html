@@ -1,0 +1,33 @@
+<div class="container">
+    <form [formGroup]="addNewDiscount" class="row" (ngSubmit)="onSubmit()">
+        <div class="col-12">
+            <label>Product Name </label>
+            <input type="text" formControlName="name">
+        </div>
+        <div class="col-12">
+            <label>Discount Percentage </label>
+            <input type="number" formControlName="discountPercentage">
+            <small class="form-error"
+                *ngIf="formControls?.discountPercentage?.touched && formControls?.discountPercentage?.errors?.required">Discount
+                Percentage is required.</small>
+            <small class="form-error"
+                *ngIf="formControls?.discountPercentage?.touched && formControls?.discountPercentage?.errors?.min">
+                Discount Percentage cannot be less than 1.
+            </small>
+        </div>
+        <div class="col-12">
+            <label>Number of pieces</label>
+            <input type="number" formControlName="numberOfPieces">
+            <small class="form-error"
+                *ngIf="formControls?.numberOfPieces?.touched && formControls?.numberOfPieces?.errors?.required">Number
+                of pieces is required.</small>
+            <small class="form-error"
+                *ngIf="formControls?.numberOfPieces?.touched && formControls?.numberOfPieces?.errors?.min">
+                Number of pieces cannot be less than 1.
+            </small>
+        </div>
+        <div style="text-align: center">
+            <button class="btn btn-success mt-5" [disabled]="!addNewDiscount.valid" type="submit">Add</button>
+        </div>
+    </form>
+</div>
