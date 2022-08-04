@@ -10,7 +10,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 
 import { ProductListComponent } from './components/product-list/product-list.component';
-import { CartComponent } from './components/product-list/cart/cart.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
